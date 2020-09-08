@@ -40,3 +40,6 @@ app.on('activate', () => {
 // Chromium -> web eingine for rendering the UI, full Chrome-like web browser
 // V8 -> engine that provides capabilities to execute, run, JS code in the browser
 // Node JS(V8) -> we are able to run JS code + provides more features
+
+// Webpack -> is a module builder, main purpose is to bundle JS files for usage in the browsert
+// Babel -> js a JS compiler
