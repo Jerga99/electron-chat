@@ -1,5 +1,6 @@
 // Main Process
 const { app, BrowserWindow, Notification } = require('electron');
+const path = require('path');
 
 function createWindow() {
   // Browser Window <- Renderer Process
@@ -19,8 +20,9 @@ function createWindow() {
 app.whenReady()
   .then(() => {
     createWindow();
-    const notification = new Notification({title: 'Hello World', body: 'My test message'});
-    notification.show();
+    const parsed = path.parse('/home/user/dir/file.txt');
+    console.log(parsed.base);
+    console.log(parsed.ext);
   });
 
 app.on('window-all-closed', () => {
@@ -34,3 +36,8 @@ app.on('activate', () => {
     createWindow();
   }
 })
+
+
+// Chromium -> web eingine for rendering the UI, full Chrome-like web browser
+// V8 -> engine that provides capabilities to execute, run, JS code in the browser
+// Node JS(V8) -> we are able to run JS code + provides more features
