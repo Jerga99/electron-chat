@@ -1,11 +1,11 @@
 
 import React from 'react';
 
-export default function ViewTitle() {
+export default function ViewTitle({text}) {
 
   return (
     <div className="chat-name-container">
-      <span className="name">Choose your channel</span>
+      <span className="name">{text}</span>
     </div>
   )
 }

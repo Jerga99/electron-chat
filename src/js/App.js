@@ -25,9 +25,9 @@ export default function App() {
           <Route path="/" exact>
             <HomeView />
           </Route>
-          <Router path="/chat">
+          <Route path="/chat/:id">
             <ChatView />
-          </Router>
+          </Route>
           <Route path="/settings">
             <SettingsView />
           </Route>
