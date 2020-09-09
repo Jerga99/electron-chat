@@ -1,6 +1,12 @@
 
 import React from 'react';
+
 import HomeView from './views/Home';
+import LoginView from './views/Login';
+import RegisterView from './views/Register';
+import SettingsView from './views/Settings';
+
+
 import Navbar from './components/Navbar';
 
 import {
@@ -15,17 +21,17 @@ export default function App() {
       <Navbar />
       <div className='content-wrapper'>
         <Switch>
+          <Route path="/" exact>
+            <HomeView />
+          </Route>
           <Route path="/settings">
-            <h1>I am Settings View</h1>
+            <SettingsView />
           </Route>
           <Route path="/login">
-            <h1>I am Login View</h1>
+            <LoginView />
           </Route>
           <Route path="/register">
-            <h1>I am Register View</h1>
-          </Route>
-          <Route path="/">
-            <HomeView />
+            <RegisterView />
           </Route>
         </Switch>
       </div>
