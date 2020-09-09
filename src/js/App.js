@@ -1,13 +1,12 @@
 
 import React from 'react';
-import { ipcRenderer } from 'electron';
 
 export default function App() {
   const title = "Hello World ";
   const enhancedTitle = title + ' - React App!';
 
   const sendNotification = () => {
-    ipcRenderer.send('notify', 'This is my custom message!');
+    window.sendNotification('My custom message');
   }
 
   return (
