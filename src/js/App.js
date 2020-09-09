@@ -2,6 +2,7 @@
 import React from 'react';
 
 import HomeView from './views/Home';
+import ChatView from './views/Chat';
 import LoginView from './views/Login';
 import RegisterView from './views/Register';
 import SettingsView from './views/Settings';
@@ -24,6 +25,9 @@ export default function App() {
           <Route path="/" exact>
             <HomeView />
           </Route>
+          <Router path="/chat">
+            <ChatView />
+          </Router>
           <Route path="/settings">
             <SettingsView />
           </Route>
