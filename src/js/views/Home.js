@@ -10,9 +10,7 @@ import { fetchChats } from '../api/chats';
 export default function Home() {
 
   useEffect(() => {
-    fetchChats().then(chats => {
-      debugger
-    });
+    fetchChats()
   }, [])
 
   return (

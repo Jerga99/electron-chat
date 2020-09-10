@@ -3,14 +3,14 @@ import firebase from 'firebase/app';
 import 'firebase/firestore';
 
 const config = {
-  apiKey: "AIzaSyBOUUMqQGaiWQm_z9CcrcpLccHtk4D1ZDo",
-  authDomain: "electron-chat-3441b.firebaseapp.com",
-  databaseURL: "https://electron-chat-3441b.firebaseio.com",
-  projectId: "electron-chat-3441b",
-  storageBucket: "electron-chat-3441b.appspot.com",
-  messagingSenderId: "118815846529",
-  appId: "1:118815846529:web:7073ae8e061926c6bfdd80",
-  measurementId: "G-YSJT4E301N"
+  apiKey: process.env.FIREBASE_API_KEY,
+  authDomain: process.env.FIREBASE_AUTH_DOMAIN,
+  databaseURL: process.env.FIREBASE_DATABASE_URL,
+  projectId: process.env.FIREBASE_PROJECT_ID,
+  storageBucket: process.env.FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: process.env.FIREBASE_MESSAGING_SENDER_ID,
+  appId: process.env.FIREBASE_APP_ID,
+  measurementId: process.env.FIREBASE_MEASURMENT_ID
 };
 
 export default firebase.initializeApp(config).firestore();
