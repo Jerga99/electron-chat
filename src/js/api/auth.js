@@ -11,6 +11,8 @@ const createUserProfile = userProfile =>
     .doc(userProfile.uid)
     .set(userProfile)
 
+
+
 export async function register({email, password, username, avatar}) {
   try {
     const { user } = await firebase.auth().createUserWithEmailAndPassword(email, password);

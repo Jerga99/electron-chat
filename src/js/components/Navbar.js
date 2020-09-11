@@ -23,10 +23,10 @@ export default function Navbar() {
           </Link>
         </div>
         <div className="chat-navbar-inner-right">
-          <span className="logged-in-user">Hi User</span>
           <Link
             to="/"
             className="btn btn-outline-success ml-2">Login</Link>
+          <span className="logged-in-user">Hi User</span>
           { user &&
             <button
               onClick={() => dispatch(logout())}
