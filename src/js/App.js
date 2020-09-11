@@ -1,5 +1,5 @@
 
-import React from 'react';
+import React, { useEffect } from 'react';
 
 import { Provider } from 'react-redux';
 
@@ -11,6 +11,7 @@ import SettingsView from './views/Settings';
 import Navbar from './components/Navbar';
 
 import configureStore from './store';
+import { listenToAuthChanges } from './actions/auth';
 
 import {
   HashRouter as Router,
@@ -21,6 +22,11 @@ import {
 const store = configureStore();
 
 export default function App() {
+
+  useEffect(() => {
+    store.dispatch(listenToAuthChanges());
+  }, [])
+
   return (
     <Provider store={store}>
       <Router>
