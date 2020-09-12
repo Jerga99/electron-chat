@@ -1,39 +1,18 @@
 
 import { combineReducers } from 'redux';
+import { createErrorReducer } from './common';
 
-function createLoginReducer() {
-  const error = (state = null, action) => {
-    switch(action.type) {
-      case 'AUTH_LOGIN_INIT':
-        return null;
-      case 'AUTH_LOGIN_ERROR':
-        return action.error;
-      default:
-        return state;
-    }
-  }
-
-  return combineReducers({
-    error
+const createLoginReducer = () =>
+  combineReducers({
+    error: createErrorReducer('AUTH_LOGIN')
   })
-}
 
-function createRegisterReducer() {
-  const error = (state = null, action) => {
-    switch(action.type) {
-      case 'AUTH_REGISTER_INIT':
-        return null
-      case 'AUTH_REGISTER_ERROR':
-        return action.error;
-      default:
-        return state;
-    }
-  }
 
-  return combineReducers({
-    error
+const createRegisterReducer = () =>
+  combineReducers({
+    error: createErrorReducer('AUTH_REGISTER')
   })
-}
+
 
 function createAuthReducer() {
   const user = (state = null, action) => {
