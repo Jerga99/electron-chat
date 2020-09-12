@@ -10,7 +10,6 @@ import ChatView from './views/Chat';
 import WelcomeView from './views/Welcome';
 import SettingsView from './views/Settings';
 
-import Navbar from './components/Navbar';
 import LoadingView from './components/shared/LoadingView';
 
 import { listenToAuthChanges } from './actions/auth';
@@ -55,7 +54,6 @@ function ChatApp() {
 
   return (
     <Router>
-      <Navbar />
       <ContentWrapper>
         <Switch>
           <Route path="/" exact>
