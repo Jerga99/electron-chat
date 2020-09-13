@@ -7,6 +7,7 @@ import StoreProvider from './store/StoreProvider';
 
 import HomeView from './views/Home';
 import ChatView from './views/Chat';
+import ChatCreate from './views/ChatCreate';
 import WelcomeView from './views/Welcome';
 import SettingsView from './views/Settings';
 
@@ -73,6 +74,9 @@ function ChatApp() {
           </Route>
           <AuthRoute path="/home">
             <HomeView />
+          </AuthRoute>
+          <AuthRoute path="/chatCreate">
+            <ChatCreate />
           </AuthRoute>
           <AuthRoute path="/chat/:id">
             <ChatView />
