@@ -9,7 +9,6 @@ export const fetchChats = () => async (dispatch, getState) => {
 
   chats
     .forEach(chat => chat.joinedUsers = chat.joinedUsers.map(user => user.id));
-
   const sortedChats = chats.reduce((accuChats, chat) => {
     accuChats[chat.joinedUsers.includes(user.uid) ? 'joined' : 'available'].push(chat);
     return accuChats;
