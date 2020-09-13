@@ -6,9 +6,12 @@ import chatReducer from '../reducers/chats';
 import authReducer from '../reducers/auth';
 import appReducer from '../reducers/app';
 
+import appMiddleware from './middlewares/app';
+
 export default function configureStore() {
   const middlewares = [
-    thunkMiddleware
+    thunkMiddleware,
+    appMiddleware
   ];
 
   const store = createStore(
