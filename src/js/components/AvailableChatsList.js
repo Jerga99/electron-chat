@@ -1,8 +1,21 @@
 
 import React from 'react';
-
+import { useDispatch, useSelector } from 'react-redux';
+import { joinChat } from '../actions/chats';
 
 export default function AvailableChatsList({chats}) {
+  const user = useSelector(({auth}) => auth.user);
+  const dispatch = useDispatch();
+
+  const askForConfirmation = chat => {
+    const isConfirming = confirm(`Do you want to join the chat: ${chat.name} ?`);
+
+    if (isConfirming) {
+      dispatch(joinChat(chat, user.uid));
+    }
+  }
+
+
   return (
     <div className="container-fluid">
       <div className="row mt-3">
@@ -19,7 +32,7 @@ export default function AvailableChatsList({chats}) {
                 <h5 className="card-title">{chat.name}</h5>
                 <p className="card-text">{chat.description}</p>
                 <button
-                  onClick={() => {}}
+                  onClick={() => askForConfirmation(chat)}
                   className="btn btn-outline-primary">Join Chat</button>
               </div>
             </div>
