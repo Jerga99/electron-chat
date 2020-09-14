@@ -9,12 +9,13 @@ import ChatMessagesList from '../components/ChatMessagesList';
 import ViewTitle from '../components/shared/ViewTitle';
 import { withBaseLayout } from '../layouts/Base';
 
-import { subscribeToChat } from '../actions/chats';
+import { subscribeToChat, subscribeToProfile } from '../actions/chats';
 
 function Chat() {
   const { id } = useParams();
   const dispatch = useDispatch();
   const activeChat = useSelector(({chats}) => chats.activeChats[id])
+  const joinedUsers = activeChat?.joinedUsers;
 
   useEffect(() => {
     const unsubFromChat = dispatch(subscribeToChat(id));
@@ -22,6 +23,16 @@ function Chat() {
       unsubFromChat();
     }
   }, [])
+
+  useEffect(() => {
+    joinedUsers && subscribeToJoinedUsers(joinedUsers);
+  }, [joinedUsers])
+
+  const subscribeToJoinedUsers = (jUsers) => {
+    jUsers.forEach(user => {
+      dispatch(subscribeToProfile(user.uid))
+    })
+  }
 
   return (
     <div className="row no-gutters fh">
