@@ -41,7 +41,14 @@ export const createChat = (formData, userId) => async dispatch => {
 
 export const subscribeToChat = chatId => dispatch =>
   api
-    .subscribeToChat(chatId, (chat) => {
+    .subscribeToChat(chatId, async (chat) => {
+
+      const joinedUsers = await Promise.all(chat.joinedUsers.map(async userRef => {
+        const userSnapshot = await userRef.get();
+        return userSnapshot.data();
+      }))
+
+      debugger
       dispatch({type: 'CHATS_SET_ACTIVE_CHAT', chat})
     })
 
