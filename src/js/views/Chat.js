@@ -9,6 +9,7 @@ import ChatMessagesList from '../components/ChatMessagesList';
 import ViewTitle from '../components/shared/ViewTitle';
 import { withBaseLayout } from '../layouts/Base';
 import LoadingView from '../components/shared/LoadingView';
+import Messenger from '../components/Messenger';
 
 import { subscribeToChat, subscribeToProfile } from '../actions/chats';
 
@@ -39,6 +40,10 @@ function Chat() {
     })
   }, [dispatch, id])
 
+  const sendMessage = message => {
+    alert(message);
+  }
+
   const unsubFromJoinedUsers = useCallback(() => {
     Object.keys(peopleWatchers.current)
       .forEach(id => peopleWatchers.current[id]())
@@ -56,6 +61,7 @@ function Chat() {
       <div className="col-9 fh">
         <ViewTitle text={`Channel ${activeChat?.name}`} />
         <ChatMessagesList />
+        <Messenger onSubmit={sendMessage} />
       </div>
     </div>
   )
