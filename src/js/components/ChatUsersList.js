@@ -4,7 +4,6 @@ import React from 'react';
 
 
 export default function ChatUserList({users = []}) {
-
   return(
     <div className="list-container">
       <div className="chat-search-box">
@@ -21,7 +20,7 @@ export default function ChatUserList({users = []}) {
               <img
                 src={user.avatar}
                 alt="Retail Admin" />
-              <span className="status online"></span>
+              <span className={`status ${user.state}`}></span>
             </div>
             <p className="name-time">
             <span className="name mr-2">{user.username}</span>
