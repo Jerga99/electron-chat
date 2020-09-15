@@ -56,7 +56,6 @@ export const subscribeToProfile = uid => dispatch =>
   api
     .subscribeToProfile(uid, user => {
       console.log('changing profile!');
-      debugger
       dispatch({type: 'CHATS_UPDATE_USER_STATE', user})
     })
 
