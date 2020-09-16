@@ -1,6 +1,7 @@
 
 
 import Notification from '../../utils/notifications';
+import Storage from '../../utils/storage';
 
 export default store => next => action => {
   switch(action.type) {
@@ -13,12 +14,9 @@ export default store => next => action => {
     }
     case 'SETTINGS_UPDATE': {
       const { setting, value } = action;
-      const currentSettings = localStorage.getItem('app-settings');
-      const parsedCurrentSettings = currentSettings ? JSON.parse(currentSettings) : {};
-
-      const settings = {...parsedCurrentSettings, [setting]: value}
-      const stringifiedSettings = JSON.stringify(settings);
-      localStorage.setItem('app-settings', stringifiedSettings);
+      const currentSettings = Storage.getItem('app-settings');
+      const settings = {...currentSettings, [setting]: value}
+      Storage.setItem('app-settings', settings);
     }
     case 'AUTH_LOGOUT_SUCCESS': {
       const { messagesSubs } = store.getState().chats;
