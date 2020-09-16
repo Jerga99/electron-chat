@@ -10,3 +10,7 @@ export const updateSettings = (setting, value) => {
     value
   }
 }
+
+export const loadInitialSettings = () => ({
+  type: 'SETTINGS_INITIAL_LOAD'
+})
