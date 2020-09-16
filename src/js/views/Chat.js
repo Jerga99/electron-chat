@@ -14,7 +14,8 @@ import Messenger from '../components/Messenger';
 import {
   subscribeToChat,
   subscribeToProfile,
-  sendChatMessage } from '../actions/chats';
+  sendChatMessage,
+  subscribeToMessages } from '../actions/chats';
 
 function Chat() {
   const { id } = useParams();
@@ -25,6 +26,7 @@ function Chat() {
 
   useEffect(() => {
     const unsubFromChat = dispatch(subscribeToChat(id));
+    dispatch(subscribeToMessages(id));
     return () => {
       unsubFromChat();
       unsubFromJoinedUsers();
