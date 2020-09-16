@@ -70,16 +70,15 @@ export const sendChatMessage = (message, chatId) => (dispatch, getState) => {
 }
 
 export const subscribeToMessages = chatId => dispatch => {
-  return api.subscribeToMessages(chatId, messages => {
+  return api.subscribeToMessages(chatId, changes => {
 
-    const chatMessages = messages.map(message => {
-      if (message.type === 'added') {
-        return {id: message.doc.id, ...message.doc.data()}
+    const messages = changes.map(change => {
+      if (change.type === 'added') {
+        return {id: change.doc.id, ...change.doc.data()}
       }
     })
 
-    dispatch({type: 'CHATS_SET_MESSAGES', chatMessages, chatId})
-    return chatMessages;
+    return dispatch({type: 'CHATS_SET_MESSAGES', messages, chatId})
   })
 }
 
