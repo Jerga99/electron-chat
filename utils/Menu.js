@@ -28,11 +28,9 @@ exports.createTemplate = app => {
           // on reload, start fresh and close any old
           // open secondary windows
           if (focusedWindow.id === 1) {
-            // console.log('in FOCUS!');
             const { BrowserWindow } = require('electron');
             BrowserWindow.getAllWindows().forEach(win => {
               if (win.id > 1) {
-                // console.log('Closing!');
                 win.close();
               }
             })
