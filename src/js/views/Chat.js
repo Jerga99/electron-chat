@@ -74,7 +74,7 @@ function Chat() {
         <ChatUserList users={activeChat?.joinedUsers} />
       </div>
       <div className="col-9 fh">
-        <ViewTitle text={`Channel ${activeChat?.name}`} />
+        <ViewTitle text={`Channel: ${activeChat?.name}`} />
         <ChatMessagesList
           innerRef={messageList}
           messages={messages} />

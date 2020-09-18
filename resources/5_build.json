@@ -1,0 +1,56 @@
+"https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/LaunchServicesKeys.html#//apple_ref/doc/uid/TP40009250-SW8"
+
+"The Hardened Runtime, along with System Integrity Protection (SIP),
+protects the runtime integrity of your software by preventing certain classes of
+exploits, like code injection, dynamically linked library (DLL) hijacking"
+
+"It enforces code signing and verifies downloaded applications before allowing them to run, thereby reducing the likelihood of inadvertently executing malware."
+
+"build": {
+  "productName": "Chat App",
+  "appId": "com.jerga.chatapp",
+  "files": [
+    "build/**/*",
+    "assets/**/*",
+    "utils/**/*",
+    "index.html",
+    "splash.html",
+    "splash.css",
+    "main.js",
+    "preload.js"
+  ],
+  "mac": {
+    "category": "public.app-category.developer-tools",
+    "icon": "assets/images/react_app_logo.png",
+    "hardenedRuntime": true,
+    "gatekeeperAssess": false
+  },
+  "dmg": {
+    "contents": [
+      {
+        "x": 130,
+        "y": 220
+      },
+      {
+        "x": 810,
+        "y": 220,
+        "type": "link",
+        "path": "/Applications"
+      }
+    ]
+  },
+  "win": {
+    "icon": "assets/images/react_app_logo.png",
+    "target": [
+      "nsis"
+    ]
+  },
+  "linux": {
+    "target": [
+      "deb",
+      "rpm",
+      "AppImage"
+    ],
+    "category": "Development"
+  }
+},
