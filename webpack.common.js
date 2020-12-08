@@ -1,12 +1,21 @@
 const path = require('path');
+const exec = require('child_process').exec;
 const Dotenv = require('dotenv-webpack');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+
+let isCompiled = false;
 
 module.exports = {
   mode: 'development',
   entry: './src/js/index.js',
   // TODO: Explain Source Map
   devtool: 'inline-source-map',
-  target: 'electron-renderer',
+  target: 'web',
+  devServer: {
+    contentBase: path.resolve(__dirname, 'build', 'js'),
+    compress: true,
+    port: 8080,
+  },
   module: {
     rules: [
       {
@@ -38,7 +47,11 @@ module.exports = {
       }
     ]
   },
-  plugins: [new Dotenv()],
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: './index.html'
+    }),
+    new Dotenv()],
   resolve: {
     extensions: ['.js'],
   },

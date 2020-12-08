@@ -5,7 +5,8 @@
   "main": "main.js",
   "scripts": {
     "start": "electron .",
-    "watch": "webpack --config webpack.common.js --watch",
+    "watch": "webpack-dev-server --config webpack.common.js --watch",
+    "start-dev": "concurrently --kill-others \"npm run watch && npm run start\"",
     "build": "webpack --config webpack.prod.js",
     "pack": "electron-builder --dir",
     "dist": "electron-builder",
@@ -69,7 +70,9 @@
     "electron": "^10.1.1",
     "electron-builder": "^22.8.1",
     "electron-reload": "^1.5.0",
-    "webpack-merge": "^5.1.4"
+    "webpack-merge": "^5.1.4",
+    "webpack-shell-plugin": "^0.5.0",
+    "webpack-shell-plugin-next": "^1.2.0"
   },
   "dependencies": {
     "@babel/preset-env": "^7.11.5",
@@ -77,8 +80,10 @@
     "@reduxjs/toolkit": "^1.4.0",
     "babel-loader": "^8.1.0",
     "bootstrap": "^4.5.2",
+    "concurrently": "^5.3.0",
     "css-loader": "^4.2.2",
     "firebase": "^7.19.1",
+    "html-webpack-plugin": "^4.5.0",
     "moment": "^2.28.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
@@ -91,6 +96,7 @@
     "sass-loader": "^10.0.2",
     "style-loader": "^1.2.1",
     "webpack": "^4.44.1",
-    "webpack-cli": "^3.3.12"
+    "webpack-cli": "^3.3.12",
+    "webpack-dev-server": "^3.11.0"
   }
 }

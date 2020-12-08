@@ -10,6 +10,7 @@ export const registerUser = formData => dispatch => {
 
 export const loginUser = formData => dispatch => {
   dispatch({type: 'AUTH_LOGIN_INIT'});
+
   return api
     .login(formData)
     .then(user => dispatch({type: 'AUTH_LOGIN_SUCCESS', user}))

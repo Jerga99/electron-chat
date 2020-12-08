@@ -13,9 +13,7 @@ function createSplashWindow() {
     frame: false,
     transparent: true,
     webPreferences: {
-      nodeIntegration: false,
-      worldSafeExecuteJavaScript: true,
-      contextIsolation: true,
+      nodeIntegration: true
     }
   })
 
@@ -30,6 +28,7 @@ function createWindow() {
     backgroundColor: '#6e707e',
     show: false,
     webPreferences: {
+      nativeWindowOpen: true,
       nodeIntegration: false,
       worldSafeExecuteJavaScript: true,
       contextIsolation: true,
@@ -37,7 +36,9 @@ function createWindow() {
     }
   })
 
-  win.loadFile('index.html')
+  win.loadURL("http://localhost:8080", {
+    userAgent: 'Chrome'
+  });
   isDev && win.webContents.openDevTools();
   return win;
 }
